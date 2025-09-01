@@ -1,29 +1,37 @@
+
 body {
   font-family: "Segoe UI", sans-serif;
   background: #f1f1f1;
   padding: 20px;
+  margin: 0;
 }
 
 .container {
   background: #fff;
-  max-width: 500px;
+  max-width: 600px;
   margin: auto;
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+  text-align: center;
+  color: #28a745;
+  margin-bottom: 20px;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
 }
 
-input,
-button {
-  padding: 10px;
+input, select, button {
+  padding: 12px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 8px;
+  font-size: 16px;
 }
 
 button {
@@ -31,32 +39,127 @@ button {
   color: white;
   border: none;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
   background: #218838;
 }
 
+.filters {
+  margin: 20px 0;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.filters label {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
 #expenses-list {
   margin-top: 20px;
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
 }
 
 .expense-item {
   background: #f8f9fa;
-  border-left: 5px solid #28a745;
-  padding: 10px;
-  margin-bottom: 10px;
+  border-left: 6px solid #28a745;
+  padding: 15px;
+  margin-bottom: 12px;
   position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.expense-item .info {
+  flex-grow: 1;
+  min-width: 200px;
+}
+
+.expense-item strong {
+  font-size: 18px;
+  color: #333;
+}
+
+.expense-item .date {
+  color: #666;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.expense-item .category {
+  background: #28a745;
+  color: white;
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 12px;
+  margin-left: 10px;
+  white-space: nowrap;
 }
 
 .expense-item button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: red;
-  color: white;
+  background: #dc3545;
   border: none;
-  border-radius: 3px;
-  padding: 5px;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
   cursor: pointer;
+  padding: 8px 12px;
+  transition: background-color 0.3s ease;
+}
+
+.expense-item button:hover {
+  background: #b52a3c;
+}
+
+#total {
+  display: block;
+  text-align: center;
+  font-size: 24px;
+  margin-top: 20px;
+  color: #28a745;
+  font-weight: bold;
+}
+
+canvas#expense-chart {
+  margin-top: 30px;
+}
+
+/* Scrollbar for expenses-list */
+#expenses-list::-webkit-scrollbar {
+  width: 8px;
+}
+#expenses-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+#expenses-list::-webkit-scrollbar-thumb {
+  background: #28a745;
+  border-radius: 10px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+  form {
+    gap: 10px;
+  }
+  input, select, button {
+    font-size: 14px;
+    padding: 10px;
+  }
+  #expenses-list {
+    max-height: 250px;
+  }
 }
